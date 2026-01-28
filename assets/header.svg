@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="lg" x1="0" x2="1">
+      <stop offset="0" stop-color="#001021"/>
+      <stop offset="1" stop-color="#021526"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0" x2="1">
+      <stop offset="0" stop-color="#00ffd5"/>
+      <stop offset="1" stop-color="#0aff9d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="300" fill="url(#lg)" />
+  <!-- grid lines -->
+  <g stroke="#07323a" stroke-width="1">
+    <pattern id="p" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0 L0 0 0 60" fill="none" stroke="#062b31" stroke-width="0.8"/>
+    </pattern>
+    <rect width="1200" height="300" fill="url(#p)" opacity="0.6"/>
+  </g>
+  <!-- neon waveform -->
+  <path d="M0 200 C150 120 350 260 600 180 C850 100 950 220 1200 160" fill="none" stroke="url(#neon)" stroke-width="4" stroke-linecap="round" opacity="0.95"/>
+  <!-- title -->
+  <g transform="translate(60,60)">
+    <text x="0" y="0" font-family="'Inter',sans-serif" font-size="36" fill="#9adbd1" font-weight="700">Sagnik Saha</text>
+    <text x="0" y="46" font-family="'JetBrains Mono',monospace" font-size="18" fill="#00ffd5">Cybersecurity Researcher • Bug Bounty • OSINT</text>
+  </g>
+  <!-- subtle nodes -->
+  <g fill="#00ffd5" opacity="0.9">
+    <circle cx="520" cy="140" r="3"/>
+    <circle cx="760" cy="110" r="3"/>
+    <circle cx="320" cy="180" r="2.5"/>
+  </g>
+</svg>
