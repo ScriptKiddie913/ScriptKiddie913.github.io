@@ -50,28 +50,60 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
   useEffect(() => {
     if (dimensions.width === 0 || dimensions.height === 0) return
 
-    const getFixedPositions = () => {
-      const centerX = dimensions.width / 2
-      const centerY = dimensions.height / 2
-      const radius = Math.min(dimensions.width, dimensions.height) * 0.25
-
-      return [
-        { x: centerX, y: centerY - radius }, // Home Terminal - Top center
-        { x: centerX - radius * 0.8, y: centerY - radius * 0.3 }, // System Profile - Top left
-        { x: centerX + radius * 0.8, y: centerY - radius * 0.3 }, // Security Credentials - Top right
-        { x: centerX - radius * 0.6, y: centerY + radius * 0.8 }, // Active Operations - Bottom left
-        { x: centerX + radius * 0.6, y: centerY + radius * 0.8 }, // Secure Channel - Bottom right
-      ]
+    const getRandomFixedPositions = () => {
+      const positions = []
+      const margin = 100
+      const titleArea = { y: 0, height: 200 } // Avoid title area
+      const bottomArea = { y: dimensions.height - 150, height: 150 } // Avoid bottom instructions
+      
+      for (let i = 0; i < nodeConfigs.length; i++) {
+        let validPosition = false
+        let attempts = 0
+        let x, y
+        
+        while (!validPosition && attempts < 50) {
+          x = margin + Math.random() * (dimensions.width - 2 * margin)
+          y = margin + Math.random() * (dimensions.height - 2 * margin)
+          
+          // Avoid title area
+          if (y > titleArea.height && y < bottomArea.y) {
+            // Check distance from other nodes to avoid overlap
+            validPosition = true
+            for (const pos of positions) {
+              const distance = Math.sqrt(Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2))
+              if (distance < 120) { // Minimum distance between nodes
+                validPosition = false
+                break
+              }
+            }
+          }
+          attempts++
+        }
+        
+        // Fallback position if random fails
+        if (!validPosition) {
+          const centerX = dimensions.width / 2
+          const centerY = dimensions.height / 2
+          const angle = (i * 2 * Math.PI) / nodeConfigs.length
+          const radius = Math.min(dimensions.width, dimensions.height) * 0.2
+          x = centerX + Math.cos(angle) * radius
+          y = centerY + Math.sin(angle) * radius
+        }
+        
+        positions.push({ x, y })
+      }
+      
+      return positions
     }
 
-    const positions = getFixedPositions()
-    const fixedNodes = nodeConfigs.map((config, index) => ({
+    const positions = getRandomFixedPositions()
+    const randomNodes = nodeConfigs.map((config, index) => ({
       ...config,
       x: positions[index].x,
       y: positions[index].y,
     }))
 
-    setNodes(fixedNodes)
+    setNodes(randomNodes)
   }, [dimensions])
 
   useEffect(() => {
@@ -122,15 +154,15 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Overlay to hide background branding */}
-      <div className="absolute inset-0 bg-black/20 z-10" />
+      <div className="absolute inset-0 bg-black/20 z-0" />
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 pointer-events-none z-15"
+        className="absolute inset-0 pointer-events-none z-10"
         style={{ background: 'transparent' }}
       />
       
       {/* Title */}
-      <div className="absolute top-10 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="absolute top-10 left-1/2 transform -translate-x-1/2 z-30">
         <motion.h1
           className="text-4xl md:text-6xl font-bold text-neon text-center font-display"
           initial={{ opacity: 0, y: -50 }}
@@ -161,7 +193,7 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
       {nodes.map((node, index) => (
         <motion.div
           key={node.id}
-          className="absolute cyber-node"
+          className="absolute cyber-node z-20 cursor-pointer"
           style={{
             left: node.x - 25,
             top: node.y - 25,
@@ -208,15 +240,15 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
       ))}
 
       {/* Instructions */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center z-30">
         <motion.div
           className="glass-effect px-6 py-4 rounded-lg"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 1 }}
         >
-          <p className="text-neon font-mono text-sm mb-2">NETWORK STATUS: ACTIVE • 5 NODES FIXED</p>
-          <p className="text-gray-400 text-xs">Fixed network topology • Hover to identify • Click to access sections</p>
+          <p className="text-neon font-mono text-sm mb-2">NETWORK STATUS: ACTIVE • 5 NODES CONNECTED</p>
+          <p className="text-gray-400 text-xs">Random network topology • Hover to identify • Click to access sections</p>
         </motion.div>
       </div>
     </div>
