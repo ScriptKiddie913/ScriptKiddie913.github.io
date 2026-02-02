@@ -31,11 +31,19 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 
   const nodeConfigs = [
+<<<<<<< HEAD
     { id: 'home', section: 'home' as SectionType, icon: <Home size={24} />, label: 'Home Section', color: '#00ffd5' },
     { id: 'about', section: 'about' as SectionType, icon: <Server size={24} />, label: 'About Section', color: '#0aff9d' },
     { id: 'certifications', section: 'certifications' as SectionType, icon: <Award size={24} />, label: 'Certifications Section', color: '#ff6b6b' },
     { id: 'projects', section: 'projects' as SectionType, icon: <Code size={24} />, label: 'Projects Section', color: '#4ecdc4' },
     { id: 'contact', section: 'contact' as SectionType, icon: <Mail size={24} />, label: 'Contact Section', color: '#ffe66d' },
+=======
+    { id: 'home', section: 'home' as SectionType, icon: <Home size={24} />, label: 'Home Terminal', color: '#00ffd5' },
+    { id: 'about', section: 'about' as SectionType, icon: <Server size={24} />, label: 'System Profile', color: '#0aff9d' },
+    { id: 'certifications', section: 'certifications' as SectionType, icon: <Award size={24} />, label: 'Security Credentials', color: '#ff6b6b' },
+    { id: 'projects', section: 'projects' as SectionType, icon: <Code size={24} />, label: 'Active Operations', color: '#4ecdc4' },
+    { id: 'contact', section: 'contact' as SectionType, icon: <Mail size={24} />, label: 'Secure Channel', color: '#ffe66d' },
+>>>>>>> b683cb9ef6ef54c444411505984e93e9522caa69
   ]
 
   useEffect(() => {
@@ -50,10 +58,20 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
   useEffect(() => {
     if (dimensions.width === 0 || dimensions.height === 0) return
 
+<<<<<<< HEAD
     const getFixedPositions = () => {
       const centerX = dimensions.width / 2
       const centerY = dimensions.height / 2
       const radius = Math.min(dimensions.width, dimensions.height) * 0.25
+=======
+    const generateSafePosition = () => {
+      const margin = 100 // Safe margin from edges
+      return {
+        x: margin + Math.random() * (dimensions.width - 2 * margin),
+        y: margin + Math.random() * (dimensions.height - 2 * margin),
+      }
+    }
+>>>>>>> b683cb9ef6ef54c444411505984e93e9522caa69
 
       return [
         { x: centerX, y: centerY - radius }, // Home Terminal - Top center
@@ -67,11 +85,35 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
     const positions = getFixedPositions()
     const fixedNodes = nodeConfigs.map((config, index) => ({
       ...config,
+<<<<<<< HEAD
       x: positions[index].x,
       y: positions[index].y,
     }))
 
     setNodes(fixedNodes)
+=======
+      ...generateSafePosition(),
+    }))
+
+    setNodes(initialNodes)
+  }, [dimensions])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNodes(prevNodes => 
+        prevNodes.map(node => {
+          const margin = 100
+          return {
+            ...node,
+            x: margin + Math.random() * (dimensions.width - 2 * margin),
+            y: margin + Math.random() * (dimensions.height - 2 * margin),
+          }
+        })
+      )
+    }, 8000)
+
+    return () => clearInterval(interval)
+>>>>>>> b683cb9ef6ef54c444411505984e93e9522caa69
   }, [dimensions])
 
   useEffect(() => {
@@ -145,6 +187,7 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
         >
+<<<<<<< HEAD
           Welcome to the Safehouse
         </motion.p>
         <motion.p
@@ -154,6 +197,9 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
           transition={{ delay: 1, duration: 1 }}
         >
           "No one Gets All They Want In Life And That Is Beautiful"
+=======
+          Navigate through the cybersecurity network by clicking nodes
+>>>>>>> b683cb9ef6ef54c444411505984e93e9522caa69
         </motion.p>
       </div>
 
@@ -215,8 +261,13 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 1 }}
         >
+<<<<<<< HEAD
           <p className="text-neon font-mono text-sm mb-2">NETWORK STATUS: ACTIVE • 5 NODES FIXED</p>
           <p className="text-gray-400 text-xs">Fixed network topology • Hover to identify • Click to access sections</p>
+=======
+          <p className="text-neon font-mono text-sm mb-2">NETWORK STATUS: ACTIVE • 5 NODES CONNECTED</p>
+          <p className="text-gray-400 text-xs">Nodes rearrange every 8 seconds • Hover to identify • Click to access sections</p>
+>>>>>>> b683cb9ef6ef54c444411505984e93e9522caa69
         </motion.div>
       </div>
     </div>
