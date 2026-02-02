@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>disavowed913 | Cybersecurity Researcher & Offensive Security Lead</title>
-  <meta name="description" content="Precision-driven vulnerability research, AI-assisted analysis, and intelligence-led threat hunting. Professional cybersecurity researcher and bug bounty hunter.">
+  <title>Sagnik Saha | Cybersecurity Researcher & Offensive Security Specialist</title>
+  <meta name="description" content="Cybersecurity researcher, bug bounty hunter, and OSINT specialist. Certified in mobile app pentesting, network security, and application security. Dark web reconnaissance expert.">
   <meta name="theme-color" content="#001820">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/cyber.css">
@@ -12,7 +12,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,11 +24,17 @@
           fontFamily: {
             mono: ['JetBrains Mono', 'monospace'],
             sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif']
           },
           colors: {
             neon: '#00ffd5',
             cyber: '#0aff9d',
-            darkbg: '#020617'
+            darkbg: '#020617',
+            purple: {
+              500: '#a855f7',
+              600: '#9333ea',
+              700: '#7e22ce'
+            }
           }
         }
       }
@@ -37,6 +43,17 @@
 </head>
 
 <body class="bg-darkbg text-gray-200 font-sans overflow-x-hidden">
+
+<!-- Live Cyber Attack Map Background -->
+<div class="cyber-map-background" aria-hidden="true">
+  <iframe 
+    src="https://threatmap.checkpoint.com/ThreatPortal/livemap.html" 
+    frameborder="0" 
+    scrolling="no"
+    allow="autoplay"
+    title="Cyber Threat Map">
+  </iframe>
+</div>
 
 <!-- Floating particles effect -->
 <div class="particles" aria-hidden="true">
@@ -50,52 +67,609 @@
   <div class="particle" style="left:40%;top:90%;animation-delay:1.5s;"></div>
 </div>
 
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-darkbg/70 border-b border-gray-800/50">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      <div class="font-display text-2xl font-bold text-neon glow-text">Sagnik Saha</div>
+      <div class="hidden md:flex gap-6 font-mono text-sm">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#certifications" class="nav-link">Certifications</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <button class="md:hidden text-neon" id="mobile-menu-btn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="hidden mobile-menu mt-4 pb-4 md:hidden" id="mobile-menu">
+      <div class="flex flex-col gap-3 font-mono text-sm">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#certifications" class="nav-link">Certifications</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
 <!-- HERO -->
-<header class="cyber-hero">
+<header class="cyber-hero pt-20">
   <div class="scanline" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="tagline">⚡ Cybersecurity Researcher • Bug Bounty Hunter • OSINT Specialist</div>
-    <h1>disavowed913</h1>
-    <h2 class="text-2xl md:text-4xl font-bold text-gray-300 mb-6" style="animation-delay:0.2s;">Offensive Security Lead & Intelligence Researcher</h2>
-    <p class="lead">Precision-driven vulnerability research, AI-assisted analysis, and intelligence-led threat hunting. Focused on high-impact discoveries and crisp, actionable reporting.</p>
-    <div class="flex gap-4 mt-8 flex-wrap">
-      <a href="#about" class="neon-btn"><span>→ Learn More</span></a>
-      <a href="#contact" class="neon-btn" style="background:rgba(0,255,213,0.1);backdrop-filter:blur(10px);color:var(--neon-1);border:1px solid rgba(0,255,213,0.3);"><span>💬 Get in Touch</span></a>
+    <div class="tagline fade-in-up" style="animation-delay:0.2s;">🔐 Cybersecurity Researcher • Bug Bounty Hunter • Dark Web Recon Specialist</div>
+    <h1 class="font-display fade-in-up" style="animation-delay:0.3s;">Sagnik Saha</h1>
+    <h2 class="text-xl md:text-3xl font-display font-bold text-gray-300 mb-6 fade-in-up" style="animation-delay:0.4s;">
+      Offensive Security Specialist & OSINT Expert
+    </h2>
+    <div class="flex flex-wrap gap-3 text-sm md:text-base font-mono text-gray-400 mb-8 fade-in-up" style="animation-delay:0.5s;">
+      <span class="flex items-center gap-2">📍 Kolkata, West Bengal, India</span>
+      <span class="flex items-center gap-2">🔧 Founder of SoTaNik_AI</span>
+      <span class="flex items-center gap-2">🏆 17+ Industry Certifications</span>
+    </div>
+    <p class="lead fade-in-up" style="animation-delay:0.6s;">
+      Specialized in mobile application penetration testing, network security, dark web reconnaissance, and AI-driven OSINT operations. 
+      Founder of SoTaNik_AI with expertise in vulnerability research, threat intelligence, and advanced security analysis across multiple domains.
+    </p>
+    <div class="flex gap-4 mt-8 flex-wrap fade-in-up" style="animation-delay:0.7s;">
+      <a href="#contact" class="neon-btn"><span>💬 Get in Touch</span></a>
+      <a href="#certifications" class="neon-btn secondary"><span>🎖️ View Certifications</span></a>
+      <a href="https://ghostprotocol-cyber-command.vercel.app/" target="_blank" class="neon-btn secondary"><span>🌐 Live Projects</span></a>
     </div>
   </div>
 </header>
 
 <!-- ABOUT ME -->
-<section id="about" class="py-24 px-6 max-w-6xl mx-auto">
-  <h2 class="text-3xl md:text-4xl font-bold mb-8 text-neon flex items-center gap-3">
+<section id="about" class="py-24 px-6 max-w-6xl mx-auto reveal">
+  <h2 class="section-title">
     <span class="text-4xl">💫</span> About Me
   </h2>
   <div class="glass-card">
     <div class="space-y-6 text-gray-300 leading-relaxed text-lg">
       <p>
-        I am a passionate and results‑driven <strong class="text-neon">Cybersecurity Researcher</strong> and <strong class="text-neon">Bug Bounty Hunter</strong> with deep expertise in offensive security, web application penetration testing, and advanced OSINT operations. I specialize in identifying, exploiting, and responsibly disclosing high‑impact security vulnerabilities across complex web applications, APIs, cloud environments, and network infrastructures.
+        I am a passionate <strong class="text-neon">Cybersecurity Researcher</strong>, <strong class="text-neon">Bug Bounty Hunter</strong>, 
+        and <strong class="text-cyber">Dark Web Reconnaissance Specialist</strong> with expertise in offensive security and threat intelligence. 
+        As the founder of <strong class="text-cyber">SoTaNik_AI</strong>, I specialize in cutting-edge security research combining AI-driven analysis with traditional penetration testing methodologies.
       </p>
       <p>
-        My approach blends deep manual exploitation techniques with automated tooling and <strong class="text-cyber">AI‑assisted security analysis</strong>, enabling me to uncover subtle security flaws that traditional scanners and surface‑level assessments frequently miss. I actively conduct real‑world vulnerability research through major bug bounty platforms, freelance security engagements, CTF competitions, and independent research projects.
+        My expertise spans <strong class="text-neon">Mobile Application Penetration Testing</strong>, <strong class="text-neon">Network Security</strong>, 
+        <strong class="text-cyber">Web Application Security</strong>, and <strong class="text-cyber">Advanced OSINT Operations</strong>. 
+        I actively conduct vulnerability research through major bug bounty platforms including ComOlho, participate in CTF competitions (picoCTF, HackTheBox, Defcon), 
+        and host my own sponsored CTF event, SCPCTF.
       </p>
       <p>
-        I have hands‑on experience in <strong class="text-cyber">LLM‑assisted pentesting</strong>, dark web intelligence collection, underground forum monitoring, and threat actor tracking, with a strong emphasis on proactive threat hunting and intelligence‑driven security research. I excel at translating complex technical findings into clear, actionable, and professional security reports aligned with industry standards and responsible disclosure practices.
+        I have developed innovative <strong class="text-neon">Agentic AI-based projects</strong> that continuously monitor underground forums like BreachForums and Nulled for data leaks, 
+        automatically adapting to new domains when they shut down. Currently developing <strong class="text-cyber">SoTaNik OSINT HUB</strong>, 
+        an LLM-backed OSINT tool designed for comprehensive intelligence gathering and analysis.
       </p>
-      <p class="text-gray-400 italic border-l-4 border-neon pl-4">
-        Driven by continuous learning, adversarial thinking, and real‑world impact, I constantly evolve alongside emerging attack vectors, zero‑day exploitation techniques, and modern defensive strategies.
-      </p>
+      <div class="grid md:grid-cols-3 gap-4 mt-8">
+        <div class="stat-card">
+          <div class="stat-number">17+</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Security Findings</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CORE EXPERTISE -->
-<section class="py-24 px-6 bg-slate-950">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-neon flex items-center gap-3">
-      <span class="text-4xl">🔐</span> Core Expertise & Technical Competencies
-    </h2>
 
+
+<!-- EXPERIENCE -->
+<section id="experience" class="py-24 px-6 max-w-6xl mx-auto reveal">
+  <h2 class="section-title">
+    <span class="text-4xl">💼</span> Professional Experience
+  </h2>
+  
+  <div class="space-y-6">
+    <div class="glass-card timeline-card">
+      <div class="timeline-marker"></div>
+      <h3 class="text-xl font-bold text-cyber mb-2">Security Analyst Intern</h3>
+      <p class="text-neon font-semibold mb-2">Shadowfox</p>
+      <p class="text-gray-400 font-mono text-sm mb-4">Certificate ID: SF10VIP03</p>
+      <p class="text-gray-300 leading-relaxed">
+        Completed intensive 1-month internship focusing on threat analysis, vulnerability assessment, and security operations. 
+        Gained hands-on experience in identifying security vulnerabilities and implementing defensive measures.
+      </p>
+    </div>
+
+    <div class="glass-card timeline-card">
+      <div class="timeline-marker"></div>
+      <h3 class="text-xl font-bold text-cyber mb-2">Freelance Bug Bounty Hunter</h3>
+      <p class="text-neon font-semibold mb-2">ComOlho & Various Platforms</p>
+      <p class="text-gray-400 font-mono text-sm mb-4">Ongoing</p>
+      <p class="text-gray-300 leading-relaxed">
+        Actively conducting paid and unpaid bug bounty programs, discovering and responsibly disclosing security vulnerabilities. 
+        Received multiple acknowledgments and rewards for critical security findings.
+      </p>
+    </div>
+
+    <div class="glass-card timeline-card">
+      <div class="timeline-marker"></div>
+      <h3 class="text-xl font-bold text-cyber mb-2">CTF Participant & Organizer</h3>
+      <p class="text-neon font-semibold mb-2">picoCTF, HackTheBox, Defcon & SCPCTF</p>
+      <p class="text-gray-400 font-mono text-sm mb-4">Ongoing</p>
+      <p class="text-gray-300 leading-relaxed">
+        Active participant in major CTF competitions and hosting own sponsored CTF event (SCPCTF - Jan 10-12, 2026). 
+        Specialized in web exploitation, cryptography, forensics, and reverse engineering challenges.
+      </p>
+    </div>
+
+    <div class="glass-card timeline-card">
+      <div class="timeline-marker"></div>
+      <h3 class="text-xl font-bold text-cyber mb-2">Founder & Lead Developer</h3>
+      <p class="text-neon font-semibold mb-2">SoTaNik_AI</p>
+      <p class="text-gray-400 font-mono text-sm mb-4">2024 - Present</p>
+      <p class="text-gray-300 leading-relaxed mb-3">
+        Founded and leading the development of cutting-edge security and OSINT tools:
+      </p>
+      <ul class="space-y-2 text-gray-300">
+        <li class="flex items-start gap-2"><span class="text-neon mt-1">▸</span> Developed Agentic AI system for monitoring BreachForums, Nulled, and other underground forums for data leaks</li>
+        <li class="flex items-start gap-2"><span class="text-neon mt-1">▸</span> Created automated domain tracking system that adapts when forums shut down</li>
+        <li class="flex items-start gap-2"><span class="text-neon mt-1">▸</span> Building SoTaNik OSINT HUB: LLM-backed comprehensive OSINT tool (in development)</li>
+        <li class="flex items-start gap-2"><span class="text-neon mt-1">▸</span> Implementing AI-driven threat intelligence correlation and analysis</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="py-24 px-6 bg-slate-950 reveal">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="section-title">
+      <span class="text-4xl">🎖️</span> Certifications & Achievements
+    </h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- CJMAP 2.0 -->
+      <div class="cert-card">
+        <div class="cert-icon">🔐</div>
+        <h3 class="cert-title">Certified Junior Mobile App Pen Tester 2.0</h3>
+        <p class="cert-org">Sturtle Security Pvt Ltd.</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Dec 2025</p>
+          <p class="cert-id">STURSEC/2024/CJMAP2/001</p>
+        </div>
+        <div class="cert-badge">CJMAP 2.0</div>
+      </div>
+
+      <!-- JWPT -->
+      <div class="cert-card">
+        <div class="cert-icon">🛡️</div>
+        <h3 class="cert-title">Junior Web Penetration Tester (JWPT)</h3>
+        <p class="cert-org">HackersDaddy</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued 2025</p>
+          <p class="cert-id">JWPT2K25B5405</p>
+        </div>
+        <div class="cert-badge">JWPT</div>
+      </div>
+
+      <!-- Legacy System Security -->
+      <div class="cert-card">
+        <div class="cert-icon">💾</div>
+        <h3 class="cert-title">Legacy-System Security Associate</h3>
+        <p class="cert-org">OPSWAT Academy</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Dec 2025 · Expires Nov 2026</p>
+          <p class="cert-id">fEqaeI1-cw</p>
+        </div>
+        <div class="cert-badge">OLSA</div>
+      </div>
+
+      <!-- Secure Storage -->
+      <div class="cert-card">
+        <div class="cert-icon">💽</div>
+        <h3 class="cert-title">Secure Storage Associate</h3>
+        <p class="cert-org">OPSWAT Academy</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Dec 2025 · Expires Nov 2026</p>
+          <p class="cert-id">Rm0In6XDuQ</p>
+        </div>
+        <div class="cert-badge">OSSA</div>
+      </div>
+
+      <!-- Web Traffic Protection -->
+      <div class="cert-card">
+        <div class="cert-icon">🌐</div>
+        <h3 class="cert-title">Web-Traffic Protection Associate</h3>
+        <p class="cert-org">OPSWAT Academy</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Dec 2025 · Expires Nov 2026</p>
+          <p class="cert-id">Ucc9lLmmew</p>
+        </div>
+        <div class="cert-badge">OWPA</div>
+      </div>
+
+      <!-- Network Security -->
+      <div class="cert-card">
+        <div class="cert-icon">🔌</div>
+        <h3 class="cert-title">Network Security Associate</h3>
+        <p class="cert-org">OPSWAT Academy</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Nov 2025 · Expires Oct 2026</p>
+          <p class="cert-id">cw4bjypADQ</p>
+        </div>
+        <div class="cert-badge">ONSA</div>
+      </div>
+
+      <!-- Email Security -->
+      <div class="cert-card">
+        <div class="cert-icon">📧</div>
+        <h3 class="cert-title">Email Security Associate</h3>
+        <p class="cert-org">OPSWAT Academy</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Oct 2025 · Expires Sep 2026</p>
+          <p class="cert-id">L_7vwJeZuA</p>
+        </div>
+        <div class="cert-badge">OESA</div>
+      </div>
+
+      <!-- CNSP -->
+      <div class="cert-card featured">
+        <div class="cert-icon">🏆</div>
+        <h3 class="cert-title">Certified Network Security Practitioner (CNSP)</h3>
+        <p class="cert-org">The SecOps Group (PentestingExams.com)</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Jan 2025 · Expires Jan 2027</p>
+          <p class="cert-id">9584055</p>
+        </div>
+        <div class="cert-skills">
+          <span class="skill-tag">Network Security</span>
+        </div>
+        <div class="cert-badge merit">WITH MERIT</div>
+      </div>
+
+      <!-- Bug Bounty -->
+      <div class="cert-card">
+        <div class="cert-icon">🐛</div>
+        <h3 class="cert-title">ComOlho Bug Bounty</h3>
+        <p class="cert-org">ComOlho Bug Bounty</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Dec 2024</p>
+        </div>
+        <div class="cert-badge">Researcher</div>
+      </div>
+
+      <!-- DS Group -->
+      <div class="cert-card">
+        <div class="cert-icon">🔬</div>
+        <h3 class="cert-title">DS Group Certificate Research Program</h3>
+        <p class="cert-org">DS Group</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Dec 2024</p>
+        </div>
+        <div class="cert-badge">Researcher</div>
+      </div>
+
+      <!-- Databricks -->
+      <div class="cert-card">
+        <div class="cert-icon">🤖</div>
+        <h3 class="cert-title">Academy Accreditation - Generative AI Fundamentals</h3>
+        <p class="cert-org">Databricks</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Sep 2024 · Expires Sep 2026</p>
+          <p class="cert-id">116710928</p>
+        </div>
+        <div class="cert-badge">AI/ML</div>
+      </div>
+
+      <!-- CAP -->
+      <div class="cert-card featured">
+        <div class="cert-icon">🛡️</div>
+        <h3 class="cert-title">Certified AppSec Practitioner (CAP)</h3>
+        <p class="cert-org">The SecOps Group (PentestingExams.com)</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Sep 2024</p>
+          <p class="cert-id">9092500</p>
+        </div>
+        <div class="cert-badge merit">WITH MERIT</div>
+      </div>
+
+      <!-- BTJA -->
+      <div class="cert-card featured">
+        <div class="cert-icon">🔵</div>
+        <h3 class="cert-title">Blue Team Junior Analyst (BTJA)</h3>
+        <p class="cert-org">Security Blue Team</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued Jul 2024</p>
+          <p class="cert-id">437075840</p>
+        </div>
+        <div class="cert-skills">
+          <span class="skill-tag">Threat & Vulnerability Management</span>
+          <span class="skill-tag">Vulnerability Assessment</span>
+          <span class="skill-tag">Ethical Hacking</span>
+          <span class="skill-tag">Penetration Testing</span>
+          <span class="skill-tag">Threat Assessment</span>
+          <span class="skill-tag">Digital Forensics</span>
+        </div>
+        <div class="cert-badge">Blue Team</div>
+      </div>
+
+      <!-- Cisco Ethical Hacker -->
+      <div class="cert-card">
+        <div class="cert-icon">🌐</div>
+        <h3 class="cert-title">Ethical Hacker</h3>
+        <p class="cert-org">Cisco</p>
+        <div class="cert-details">
+          <p class="cert-date">Certified</p>
+        </div>
+        <div class="cert-badge">Cisco</div>
+      </div>
+
+      <!-- ISO 27001 -->
+      <div class="cert-card">
+        <div class="cert-icon">📜</div>
+        <h3 class="cert-title">ISO/IEC 27001:2022 Information Security Associate</h3>
+        <p class="cert-org">Skillfront</p>
+        <div class="cert-details">
+          <p class="cert-date">Certified</p>
+          <p class="cert-id">95156658792412</p>
+        </div>
+        <div class="cert-badge">ISO</div>
+      </div>
+
+      <!-- CompTIA -->
+      <div class="cert-card">
+        <div class="cert-icon">🔍</div>
+        <h3 class="cert-title">CompTIA Cybersecurity Analyst+: Digital Forensics</h3>
+        <p class="cert-org">CompTIA</p>
+        <div class="cert-details">
+          <p class="cert-date">Certified</p>
+        </div>
+        <div class="cert-badge">CompTIA</div>
+      </div>
+
+      <!-- Oracle -->
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <h3 class="cert-title">Oracle Certified Foundation Associate</h3>
+        <p class="cert-org">Oracle</p>
+        <div class="cert-details">
+          <p class="cert-date">Issued 2025</p>
+        </div>
+        <div class="cert-badge">Oracle</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-24 px-6 max-w-6xl mx-auto reveal">
+  <h2 class="section-title">
+    <span class="text-4xl">⚡</span> Technical Skills & Expertise
+  </h2>
+  
+  <div class="grid md:grid-cols-2 gap-8">
+    <!-- Software Tools -->
+    <div class="glass-card">
+      <h3 class="text-xl font-bold text-cyber mb-6 flex items-center gap-2 font-display">
+        <span class="text-2xl">🛠️</span> Security Tools & Platforms
+      </h3>
+      <div class="flex flex-wrap gap-3">
+        <span class="skill-badge">Nessus</span>
+        <span class="skill-badge">Burp Suite Pro</span>
+        <span class="skill-badge">OpenCTI</span>
+        <span class="skill-badge">Splunk</span>
+        <span class="skill-badge">Maltego</span>
+        <span class="skill-badge">LLM Pentest Tools</span>
+        <span class="skill-badge">TPOT (Honeypot)</span>
+        <span class="skill-badge">Ghidra</span>
+        <span class="skill-badge">HexStrike</span>
+      </div>
+      <div class="proficiency-bar mt-4">
+        <div class="proficiency-level" style="width: 95%;">Advanced</div>
+      </div>
+    </div>
+
+    <!-- Programming -->
+    <div class="glass-card">
+      <h3 class="text-xl font-bold text-cyber mb-6 flex items-center gap-2 font-display">
+        <span class="text-2xl">💻</span> Programming Languages
+      </h3>
+      <div class="flex flex-wrap gap-3">
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">Java</span>
+        <span class="skill-badge">C</span>
+        <span class="skill-badge">Bash Script</span>
+        <span class="skill-badge">SQL</span>
+        <span class="skill-badge">React</span>
+        <span class="skill-badge">JavaScript</span>
+      </div>
+      <div class="proficiency-bar mt-4">
+        <div class="proficiency-level" style="width: 85%;">Intermediate</div>
+      </div>
+    </div>
+
+    <!-- Security Domains -->
+    <div class="glass-card">
+      <h3 class="text-xl font-bold text-cyber mb-6 flex items-center gap-2 font-display">
+        <span class="text-2xl">🔐</span> Security Domains
+      </h3>
+      <ul class="space-y-3 text-gray-300">
+        <li class="flex items-start gap-2"><span class="text-neon mt-1">▸</span> Mobile Application Penetration Testing</li>
+        <li class="flex items-start gap-2"><span class="text-neon mt-1">▸</span> Web Application Security Testing</li>
+        <li class="flex items-start gap-2"><span class="text-neon mt-1">▸</span> Network Security & Infrastructure</li>
+        <li class="flex items-start gap-2"><span class="text-neon mt-1">▸</span> Dark Web Reconnaissance</li>
+        <li class="flex items-start gap-2"><span class="text-neon mt-1">▸</span> OSINT & Threat Intelligence</li>
+        <li class="flex items-start gap-2"><span class="text-neon mt-1">▸</span> Digital Forensics & Incident Response</li>
+        <li class="flex items-start gap-2"><span class="text-neon mt-1">▸</span> AI-Assisted Security Analysis</li>
+      </ul>
+    </div>
+
+    <!-- Languages -->
+    <div class="glass-card">
+      <h3 class="text-xl font-bold text-cyber mb-6 flex items-center gap-2 font-display">
+        <span class="text-2xl">🗣️</span> Communication Languages
+      </h3>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-gray-300 font-semibold">English</span>
+            <span class="text-neon">Advanced</span>
+          </div>
+          <div class="proficiency-bar">
+            <div class="proficiency-level" style="width: 95%;"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-gray-300 font-semibold">Hindi</span>
+            <span class="text-neon">Advanced</span>
+          </div>
+          <div class="proficiency-bar">
+            <div class="proficiency-level" style="width: 95%;"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-gray-300 font-semibold">Bengali</span>
+            <span class="text-neon">Advanced</span>
+          </div>
+          <div class="proficiency-bar">
+            <div class="proficiency-level" style="width: 95%;"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-gray-300 font-semibold">Russian</span>
+            <span class="text-neon">Low-key</span>
+          </div>
+          <div class="proficiency-bar">
+            <div class="proficiency-level" style="width: 40%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tech Stack -->
+  <div class="mt-12">
+    <h3 class="text-2xl font-bold text-neon mb-6 font-display">Technology Stack</h3>
+    <div class="glass-card">
+      <div class="flex flex-wrap gap-3 items-center justify-center">
+        <img src="https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white" alt="C" class="tech-badge">
+        <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" class="tech-badge">
+        <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python" class="tech-badge">
+        <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript" class="tech-badge">
+        <img src="https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash" class="tech-badge">
+        <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" class="tech-badge">
+        <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" class="tech-badge">
+        <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" alt="Postgres" class="tech-badge">
+        <img src="https://img.shields.io/badge/splunk-%23000000.svg?style=for-the-badge&logo=splunk&logoColor=white" alt="Splunk" class="tech-badge">
+        <img src="https://img.shields.io/badge/tor-%237E4798.svg?style=for-the-badge&logo=tor-project&logoColor=white" alt="Tor" class="tech-badge">
+        <img src="https://img.shields.io/badge/wireguard-%2388171A.svg?style=for-the-badge&logo=wireguard&logoColor=white" alt="WireGuard" class="tech-badge">
+        <img src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" class="tech-badge">
+        <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" class="tech-badge">
+        <img src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white" alt="TensorFlow" class="tech-badge">
+        <img src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" class="tech-badge">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-24 px-6 bg-slate-950 reveal">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="section-title">
+      <span class="text-4xl">🚀</span> Featured Projects & Initiatives
+    </h2>
+    
     <div class="grid md:grid-cols-2 gap-8">
+      
+      <!-- SoTaNik OSINT HUB -->
+      <div class="glass-card project-card">
+        <div class="project-icon">🔍</div>
+        <h3 class="text-2xl font-bold text-neon mb-3 font-display">SoTaNik OSINT HUB</h3>
+        <p class="text-gray-400 text-sm mb-3 font-mono">Status: In Development</p>
+        <p class="text-gray-300 leading-relaxed mb-4">
+          Advanced LLM-backed Open Source Intelligence tool designed for comprehensive intelligence gathering, data correlation, and threat analysis. 
+          Integrates multiple OSINT sources with AI-driven analysis for enhanced decision-making.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">LLM</span>
+          <span class="tech-tag">OSINT</span>
+          <span class="tech-tag">AI/ML</span>
+        </div>
+        <span class="project-status developing">🔨 In Development</span>
+      </div>
+
+      <!-- Agentic AI Monitoring -->
+      <div class="glass-card project-card">
+        <div class="project-icon">🤖</div>
+        <h3 class="text-2xl font-bold text-neon mb-3 font-display">Agentic AI Forum Monitor</h3>
+        <p class="text-gray-400 text-sm mb-3 font-mono">Status: Live</p>
+        <p class="text-gray-300 leading-relaxed mb-4">
+          Autonomous AI system that continuously monitors underground forums (BreachForums, Nulled, etc.) for data leaks and security threats. 
+          Automatically adapts to new domain changes and provides real-time threat intelligence.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">AI Agents</span>
+          <span class="tech-tag">Dark Web</span>
+          <span class="tech-tag">Threat Intel</span>
+        </div>
+        <span class="project-status live">✅ Live</span>
+      </div>
+
+      <!-- Ghost Protocol -->
+      <div class="glass-card project-card">
+        <div class="project-icon">👻</div>
+        <h3 class="text-2xl font-bold text-neon mb-3 font-display">Ghost Protocol Cyber Command</h3>
+        <p class="text-gray-400 text-sm mb-3 font-mono">Status: Live</p>
+        <p class="text-gray-300 leading-relaxed mb-4">
+          Professional cybersecurity operations dashboard showcasing security research, threat intelligence, and penetration testing methodologies.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">Vercel</span>
+        </div>
+        <a href="https://ghostprotocol-cyber-command.vercel.app/" target="_blank" class="project-link">
+          View Project →
+        </a>
+      </div>
+
+      <!-- SCPCTF -->
+      <div class="glass-card project-card">
+        <div class="project-icon">🏁</div>
+        <h3 class="text-2xl font-bold text-neon mb-3 font-display">SCPCTF - Sponsored CTF Event</h3>
+        <p class="text-gray-400 text-sm mb-3 font-mono">Event: Jan 10-12, 2026</p>
+        <p class="text-gray-300 leading-relaxed mb-4">
+          Organized and hosting a sponsored Capture The Flag competition featuring challenges in web exploitation, cryptography, forensics, reverse engineering, and more.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="tech-tag">CTF</span>
+          <span class="tech-tag">Security</span>
+          <span class="tech-tag">Competition</span>
+        </div>
+        <a href="https://scpctf.vercel.app/" target="_blank" class="project-link">
+          View CTF Website →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
       <div class="glass-card">
         <h3 class="text-xl font-semibold mb-6 text-cyber flex items-center gap-2">
           <span class="text-2xl">⚔️</span> Offensive Security & Bug Bounty
@@ -198,34 +772,101 @@
   </div>
 </section>
 
-<!-- SOCIALS -->
-<section id="contact" class="py-24 px-6 bg-slate-950">
+<!-- CONTACT -->
+<section id="contact" class="py-24 px-6 bg-slate-950 reveal">
   <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-neon flex items-center gap-3">
-      <span class="text-4xl">🌐</span> Connect & Collaborate
+    <h2 class="section-title">
+      <span class="text-4xl">📬</span> Get In Touch
     </h2>
-    <div class="glass-card">
-      <p class="text-gray-300 text-lg mb-6">
-        Open for professional engagements, security consultations, and coordinated vulnerability disclosures. Let's connect:
-      </p>
-      <div class="flex flex-wrap gap-4 font-mono items-center">
-        <a href="https://www.instagram.com/disavowed913/" target="_blank" class="transition" title="Instagram" rel="noopener noreferrer">
-          <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=instagram&logoColor=white&style=for-the-badge" alt="Instagram" class="h-12">
-        </a>
-        <a href="https://www.linkedin.com/in/sagnik-saha-7ba227237/" target="_blank" class="transition" title="LinkedIn" rel="noopener noreferrer">
-          <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white&style=for-the-badge" alt="LinkedIn" class="h-12">
-        </a>
-        <a href="https://app.hackthebox.com/users/2003556" target="_blank" class="transition" title="HackTheBox" rel="noopener noreferrer">
-          <img src="https://img.shields.io/badge/HackTheBox-Profile-000?style=for-the-badge&logo=hackthebox&logoColor=white" alt="HackTheBox" class="h-12">
-        </a>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Contact Info -->
+      <div class="glass-card">
+        <h3 class="text-xl font-bold text-cyber mb-4 font-display">Contact Information</h3>
+        <p class="text-gray-300 mb-6">
+          Open for professional engagements, security consultations, bug bounty collaborations, and coordinated vulnerability disclosures.
+        </p>
+        <div class="space-y-4 mb-6">
+          <div class="flex items-center gap-3 text-gray-300">
+            <span class="text-neon text-xl">📧</span>
+            <a href="mailto:sagnik.saha.raptor@gmail.com" class="hover:text-neon transition">sagnik.saha.raptor@gmail.com</a>
+          </div>
+          <div class="flex items-center gap-3 text-gray-300">
+            <span class="text-neon text-xl">📱</span>
+            <a href="tel:+919903736400" class="hover:text-neon transition">+91 9903736400</a>
+          </div>
+          <div class="flex items-center gap-3 text-gray-300">
+            <span class="text-neon text-xl">📍</span>
+            <span>Kolkata, West Bengal, India</span>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold text-cyber mb-4 font-display mt-8">Social & Professional Links</h3>
+        <div class="flex flex-wrap gap-3 mb-6">
+          <a href="https://www.linkedin.com/in/sagnik-saha-7ba227237/" target="_blank" class="social-btn" title="LinkedIn" rel="noopener noreferrer">
+            <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white&style=for-the-badge" alt="LinkedIn" class="h-10">
+          </a>
+          <a href="https://github.com/ScriptKiddie913" target="_blank" class="social-btn" title="GitHub" rel="noopener noreferrer">
+            <img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white&style=for-the-badge" alt="GitHub" class="h-10">
+          </a>
+          <a href="https://app.hackthebox.com/users/2003556" target="_blank" class="social-btn" title="HackTheBox" rel="noopener noreferrer">
+            <img src="https://img.shields.io/badge/HackTheBox-Profile-000?style=for-the-badge&logo=hackthebox&logoColor=white" alt="HackTheBox" class="h-10">
+          </a>
+        </div>
+
+        <h3 class="text-xl font-bold text-cyber mb-4 font-display mt-8">Featured Websites</h3>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://ghostprotocol-cyber-command.vercel.app/" target="_blank" class="website-link">
+            <span class="text-neon">🌐</span> Ghost Protocol Cyber Command
+          </a>
+          <a href="https://scpctf.vercel.app/" target="_blank" class="website-link">
+            <span class="text-neon">🏁</span> SCPCTF Website
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="glass-card">
+        <h3 class="text-xl font-bold text-cyber mb-4 font-display">Send Message</h3>
+        <form id="contactForm" class="space-y-4">
+          <div>
+            <label for="name" class="block text-gray-300 mb-2 font-semibold">Name *</label>
+            <input type="text" id="name" name="name" required 
+              class="w-full px-4 py-3 bg-rgba(0,0,0,0.3) border border-gray-700 rounded-lg text-gray-200 focus:border-neon focus:outline-none focus:ring-2 focus:ring-neon/50 transition">
+          </div>
+          
+          <div>
+            <label for="email" class="block text-gray-300 mb-2 font-semibold">Email *</label>
+            <input type="email" id="email" name="email" required 
+              class="w-full px-4 py-3 bg-rgba(0,0,0,0.3) border border-gray-700 rounded-lg text-gray-200 focus:border-neon focus:outline-none focus:ring-2 focus:ring-neon/50 transition">
+          </div>
+          
+          <div>
+            <label for="subject" class="block text-gray-300 mb-2 font-semibold">Subject *</label>
+            <input type="text" id="subject" name="subject" required 
+              class="w-full px-4 py-3 bg-rgba(0,0,0,0.3) border border-gray-700 rounded-lg text-gray-200 focus:border-neon focus:outline-none focus:ring-2 focus:ring-neon/50 transition">
+          </div>
+          
+          <div>
+            <label for="message" class="block text-gray-300 mb-2 font-semibold">Message *</label>
+            <textarea id="message" name="message" rows="5" required 
+              class="w-full px-4 py-3 bg-rgba(0,0,0,0.3) border border-gray-700 rounded-lg text-gray-200 focus:border-neon focus:outline-none focus:ring-2 focus:ring-neon/50 transition resize-none"></textarea>
+          </div>
+          
+          <button type="submit" class="neon-btn w-full">
+            <span id="btnText">Send Message</span>
+          </button>
+          
+          <div id="formStatus" class="hidden mt-4 p-4 rounded-lg text-center font-semibold"></div>
+        </form>
       </div>
     </div>
   </div>
 </section>
 
 <!-- GITHUB STATS -->
-<section class="py-24 px-6 max-w-6xl mx-auto">
-  <h2 class="text-3xl md:text-4xl font-bold mb-8 text-neon flex items-center gap-3">
+<section class="py-24 px-6 max-w-6xl mx-auto reveal">
+  <h2 class="section-title">
     <span class="text-4xl">📊</span> GitHub Activity & Metrics
   </h2>
   <div class="glass-card">
@@ -243,54 +884,59 @@
   </div>
 </section>
 
-<!-- TERMINAL SECTION -->
-<section class="py-24 px-6 bg-slate-950">
+<!-- TERMINAL PHILOSOPHY -->
+<section class="py-24 px-6 bg-slate-950 reveal">
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-neon flex items-center gap-3">
+    <h2 class="section-title">
       <span class="text-4xl">⚡</span> Philosophy & Approach
     </h2>
     <div class="terminal">
       <div class="terminal-content">
-        <p><span class="text-cyber">$</span> cat /home/disavowed913/manifesto.txt</p>
-        <p class="mt-4">> Observe. Hypothesize. Verify. Report.</p>
-        <p class="mt-2">> Attack the problem, not the system — unless the system is the problem.</p>
-        <p class="mt-2">> Every vulnerability discovered is a chance to make systems stronger.</p>
-        <p class="mt-2">> Intelligence without action is just noise; precision without ethics is just chaos.</p>
-        <p class="mt-4 text-gray-400 italic">// Committed to responsible disclosure and measurable security impact</p>
+        <p><span class="text-cyber">sagnik@kali</span>:<span class="text-neon">~</span>$ cat manifesto.txt</p>
+        <p class="mt-4">> <span class="text-cyber">Think like an attacker. Defend like a guardian. Code like an architect.</span></p>
+        <p class="mt-2">> Every vulnerability is a lesson. Every exploit is an opportunity to strengthen defenses.</p>
+        <p class="mt-2">> Dark web reconnaissance isn't about finding darkness—it's about bringing light to hidden threats.</p>
+        <p class="mt-2">> AI-assisted security isn't replacing human intuition; it's amplifying it.</p>
+        <p class="mt-4 text-gray-400 italic">// Committed to ethical hacking, responsible disclosure, and making the digital world safer</p>
+        <p class="mt-6 text-gray-500">---</p>
+        <p class="mt-2 text-gray-400">"Security isn't a product, it's a mindset. Stay curious. Stay vigilant."</p>
         <span class="typing-cursor"></span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- QUOTE -->
-<section class="py-24 px-6 text-center">
-  <div class="max-w-4xl mx-auto glass-card">
-    <p class="font-mono text-gray-400 mb-4 text-sm uppercase tracking-wider">Daily Inspiration</p>
-    <blockquote class="text-2xl md:text-3xl font-bold text-neon leading-relaxed">
-      "In security, the best offense is a curious mind paired with relentless methodology."
-    </blockquote>
-    <p class="mt-6 text-gray-400 font-mono text-sm">— disavowed913</p>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer class="py-12 text-center border-t border-gray-800 bg-darkbg">
   <div class="max-w-6xl mx-auto px-6">
-    <p class="text-gray-500 font-mono text-sm mb-4">
-      © 2026 disavowed913 | ScriptKiddie913
+    <p class="font-display text-2xl font-bold text-neon mb-3">Sagnik Saha</p>
+    <p class="text-gray-500 font-mono text-sm mb-2">
+      © 2026 Sagnik Saha | disavowed913 | ScriptKiddie913
     </p>
-    <p class="text-gray-600 text-xs">
-      Offensive Security • OSINT • AI-Assisted Research • Responsible Disclosure
+    <p class="text-gray-600 text-xs mb-4">
+      Cybersecurity Researcher • Bug Bounty Hunter • Dark Web Recon Specialist • OSINT Expert
+    </p>
+    <p class="text-gray-600 text-xs mb-4">
+      Mobile App Pentesting • Network Security • AI-Driven Security Analysis
     </p>
     <p class="text-gray-700 text-xs mt-4">
-      Built with precision, secured by design
+      Built with precision, secured by design, powered by curiosity
     </p>
   </div>
 </footer>
 
-<!-- Smooth scroll script -->
+<!-- JavaScript -->
 <script>
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -301,6 +947,10 @@
           behavior: 'smooth',
           block: 'start'
         });
+        // Close mobile menu if open
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+        }
       }
     });
   });
@@ -308,7 +958,7 @@
   // Intersection Observer for scroll animations
   const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -100px 0px'
   };
 
   const observer = new IntersectionObserver((entries) => {
@@ -319,14 +969,108 @@
     });
   }, observerOptions);
 
-  // Observe all sections for fade-in effect
-  document.querySelectorAll('section').forEach(section => {
-    section.classList.add('reveal');
+  // Observe all reveal sections for fade-in effect
+  document.querySelectorAll('.reveal').forEach(section => {
     observer.observe(section);
   });
 
-  // Add initial active class to hero
-  document.querySelector('.cyber-hero').classList.add('active');
+  // Navbar scroll effect
+  let lastScroll = 0;
+  const nav = document.querySelector('nav');
+  
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= 0) {
+      nav.classList.remove('scroll-up');
+      return;
+    }
+    
+    if (currentScroll > lastScroll && !nav.classList.contains('scroll-down')) {
+      // Scroll Down
+      nav.classList.remove('scroll-up');
+      nav.classList.add('scroll-down');
+    } else if (currentScroll < lastScroll && nav.classList.contains('scroll-down')) {
+      // Scroll Up
+      nav.classList.remove('scroll-down');
+      nav.classList.add('scroll-up');
+    }
+    lastScroll = currentScroll;
+  });
+
+  // Parallax effect for particles
+  window.addEventListener('mousemove', (e) => {
+    const particles = document.querySelectorAll('.particle');
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+    
+    particles.forEach((particle, index) => {
+      const speed = (index + 1) * 0.5;
+      const xOffset = (x - 0.5) * speed * 20;
+      const yOffset = (y - 0.5) * speed * 20;
+      particle.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+    });
+  });
+
+  // Contact form submission
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  const btnText = document.getElementById('btnText');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        subject: document.getElementById('subject').value.trim(),
+        message: document.getElementById('message').value.trim()
+      };
+
+      // Disable submit button
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      btnText.textContent = 'Sending...';
+      formStatus.classList.add('hidden');
+
+      try {
+        // Send to serverless function
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          // Success
+          formStatus.textContent = '✅ Message sent successfully! I\'ll get back to you soon.';
+          formStatus.className = 'mt-4 p-4 rounded-lg text-center font-semibold bg-green-900/50 border border-green-500 text-green-300';
+          formStatus.classList.remove('hidden');
+          
+          // Reset form
+          contactForm.reset();
+        } else {
+          // Error from server
+          throw new Error(result.error || 'Failed to send message');
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+        formStatus.textContent = '❌ Failed to send message. Please try again or email directly at sagnik.saha.raptor@gmail.com';
+        formStatus.className = 'mt-4 p-4 rounded-lg text-center font-semibold bg-red-900/50 border border-red-500 text-red-300';
+        formStatus.classList.remove('hidden');
+      } finally {
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        btnText.textContent = 'Send Message';
+      }
+    });
+  }
 </script>
 
 </body>
