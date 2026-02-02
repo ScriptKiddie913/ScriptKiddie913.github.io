@@ -51,7 +51,7 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
     if (dimensions.width === 0 || dimensions.height === 0) return
 
     const getRandomFixedPositions = () => {
-      const positions = []
+      const positions: { x: number; y: number }[] = []
       const margin = 100
       const titleArea = { y: 0, height: 200 } // Avoid title area
       const bottomArea = { y: dimensions.height - 150, height: 150 } // Avoid bottom instructions
@@ -59,13 +59,13 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
       for (let i = 0; i < nodeConfigs.length; i++) {
         let validPosition = false
         let attempts = 0
-        let x, y
+        let x = 0, y = 0
         
         while (!validPosition && attempts < 50) {
           x = margin + Math.random() * (dimensions.width - 2 * margin)
           y = margin + Math.random() * (dimensions.height - 2 * margin)
           
-          // Avoid title area
+          // Avoid title area and bottom area
           if (y > titleArea.height && y < bottomArea.y) {
             // Check distance from other nodes to avoid overlap
             validPosition = true
