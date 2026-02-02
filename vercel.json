@@ -1,8 +1,15 @@
 {
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
   "functions": {
-    "api/**/*.js": {
+    "app/api/**/*.ts": {
       "memory": 1024,
       "maxDuration": 10
     }
+  },
+  "env": {
+    "RESEND_API_KEY": "re_9eyKRGTA_KWCoMiYee7kriTTRYmxP6V84"
   }
 }
