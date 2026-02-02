@@ -32,22 +32,10 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
 
   const nodeConfigs = [
     { id: 'home', section: 'home' as SectionType, icon: <Home size={24} />, label: 'Home Terminal', color: '#00ffd5' },
-    { id: 'about', section: 'about' as SectionType, icon: <Server size={24} />, label: 'System Info', color: '#0aff9d' },
+    { id: 'about', section: 'about' as SectionType, icon: <Server size={24} />, label: 'System Profile', color: '#0aff9d' },
     { id: 'certifications', section: 'certifications' as SectionType, icon: <Award size={24} />, label: 'Security Credentials', color: '#ff6b6b' },
     { id: 'projects', section: 'projects' as SectionType, icon: <Code size={24} />, label: 'Active Operations', color: '#4ecdc4' },
     { id: 'contact', section: 'contact' as SectionType, icon: <Mail size={24} />, label: 'Secure Channel', color: '#ffe66d' },
-    // Decorative nodes
-    { id: 'dec1', section: 'network' as SectionType, icon: <Cpu size={20} />, label: 'CPU Core', color: '#ff9ff3' },
-    { id: 'dec2', section: 'network' as SectionType, icon: <HardDrive size={20} />, label: 'Storage Unit', color: '#54a0ff' },
-    { id: 'dec3', section: 'network' as SectionType, icon: <Wifi size={20} />, label: 'Network Node', color: '#ff7675' },
-    { id: 'dec4', section: 'network' as SectionType, icon: <Bug size={20} />, label: 'Malware Sample', color: '#ff4757' },
-    { id: 'dec5', section: 'network' as SectionType, icon: <Lock size={20} />, label: 'Encryption Key', color: '#3742fa' },
-    { id: 'dec6', section: 'network' as SectionType, icon: <Eye size={20} />, label: 'Monitor', color: '#2f3542' },
-    { id: 'dec7', section: 'network' as SectionType, icon: <Zap size={20} />, label: 'Power Core', color: '#f1c40f' },
-    { id: 'dec8', section: 'network' as SectionType, icon: <Database size={20} />, label: 'Database', color: '#9c88ff' },
-    { id: 'dec9', section: 'network' as SectionType, icon: <Bitcoin size={20} />, label: 'Blockchain', color: '#f39c12' },
-    { id: 'dec10', section: 'network' as SectionType, icon: <Smartphone size={20} />, label: 'Mobile Device', color: '#e17055' },
-    { id: 'dec11', section: 'network' as SectionType, icon: <Globe size={20} />, label: 'Global Network', color: '#00b894' },
   ]
 
   useEffect(() => {
@@ -62,14 +50,17 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
   useEffect(() => {
     if (dimensions.width === 0) return
 
-    const generateRandomPosition = () => ({
-      x: Math.random() * (dimensions.width - 200) + 100,
-      y: Math.random() * (dimensions.height - 200) + 100,
-    })
+    const generateSafePosition = () => {
+      const margin = 100 // Safe margin from edges
+      return {
+        x: margin + Math.random() * (dimensions.width - 2 * margin),
+        y: margin + Math.random() * (dimensions.height - 2 * margin),
+      }
+    }
 
     const initialNodes = nodeConfigs.map(config => ({
       ...config,
-      ...generateRandomPosition(),
+      ...generateSafePosition(),
     }))
 
     setNodes(initialNodes)
@@ -78,11 +69,14 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
   useEffect(() => {
     const interval = setInterval(() => {
       setNodes(prevNodes => 
-        prevNodes.map(node => ({
-          ...node,
-          x: Math.random() * (dimensions.width - 200) + 100,
-          y: Math.random() * (dimensions.height - 200) + 100,
-        }))
+        prevNodes.map(node => {
+          const margin = 100
+          return {
+            ...node,
+            x: margin + Math.random() * (dimensions.width - 2 * margin),
+            y: margin + Math.random() * (dimensions.height - 2 * margin),
+          }
+        })
       )
     }, 8000)
 
@@ -103,21 +97,24 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.strokeStyle = '#00ffd5'
       ctx.lineWidth = 1
+      ctx.globalAlpha = 0.4
 
-      // Draw connections between nodes
+      // Draw connections between all nodes (fully connected network)
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const node1 = nodes[i]
           const node2 = nodes[j]
-          const distance = Math.sqrt((node1.x - node2.x) ** 2 + (node1.y - node2.y) ** 2)
           
-          if (distance < 300) {
-            ctx.globalAlpha = 0.3 - (distance / 300) * 0.3
-            ctx.beginPath()
-            ctx.moveTo(node1.x, node1.y)
-            ctx.lineTo(node2.x, node2.y)
-            ctx.stroke()
-          }
+          // Create gradient line based on node colors
+          const gradient = ctx.createLinearGradient(node1.x, node1.y, node2.x, node2.y)
+          gradient.addColorStop(0, node1.color + '80')
+          gradient.addColorStop(1, node2.color + '80')
+          
+          ctx.strokeStyle = gradient
+          ctx.beginPath()
+          ctx.moveTo(node1.x, node1.y)
+          ctx.lineTo(node2.x, node2.y)
+          ctx.stroke()
         }
       }
     }
@@ -155,7 +152,7 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
         >
-          Click on nodes to access different sections
+          Navigate through the cybersecurity network by clicking nodes
         </motion.p>
       </div>
 
@@ -221,8 +218,8 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 1 }}
         >
-          <p className="text-neon font-mono text-sm mb-2">NETWORK STATUS: ACTIVE</p>
-          <p className="text-gray-400 text-xs">Nodes rearrange every 8 seconds • Hover to identify • Click to access</p>
+          <p className="text-neon font-mono text-sm mb-2">NETWORK STATUS: ACTIVE • 5 NODES CONNECTED</p>
+          <p className="text-gray-400 text-xs">Nodes rearrange every 8 seconds • Hover to identify • Click to access sections</p>
         </motion.div>
       </div>
     </div>
