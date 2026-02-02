@@ -812,7 +812,9 @@
             <span id="btnText">⚡ Send Secure Message</span>
           </button>
           
-          <div id="formStatus" class="hidden mt-4 p-4 rounded-lg text-center font-semibold"></div>
+          <div class="transmission-line" id="transmissionLine"></div>
+          
+          <div id="formStatus" class="hidden mt-4 p-4 rounded-lg text-center font-semibold text-sm font-mono uppercase tracking-widest"></div>
         </form>
       </div>
     </div>
@@ -971,6 +973,7 @@
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
   const btnText = document.getElementById('btnText');
+  const transmissionLine = document.getElementById('transmissionLine');
 
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
@@ -987,8 +990,9 @@
       // Disable submit button
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
-      btnText.textContent = 'Sending...';
+      btnText.textContent = 'ESTABLISHING SECURE UPLINK...';
       formStatus.classList.add('hidden');
+      contactForm.classList.add('sending');
 
       try {
         // Send to serverless function
@@ -1004,25 +1008,26 @@
 
         if (response.ok) {
           // Success
-          formStatus.textContent = '✅ Message sent successfully! I\'ll get back to you soon.';
-          formStatus.className = 'mt-4 p-4 rounded-lg text-center font-semibold bg-green-900/50 border border-green-500 text-green-300';
+          formStatus.textContent = '✅ TRANSMISSION COMPLETE: Secure message delivered to operations.';
+          formStatus.className = 'mt-4 p-4 rounded-lg text-center font-semibold bg-green-900/40 border border-green-500/50 text-green-300 backdrop-blur-sm text-sm font-mono uppercase tracking-widest';
           formStatus.classList.remove('hidden');
           
           // Reset form
           contactForm.reset();
         } else {
           // Error from server
-          throw new Error(result.error || 'Failed to send message');
+          throw new Error(result.error || 'Uplink failed');
         }
       } catch (error) {
         console.error('Form submission error:', error);
-        formStatus.textContent = '❌ Failed to send message. Please try again or email directly at sagnik.saha.raptor@gmail.com';
-        formStatus.className = 'mt-4 p-4 rounded-lg text-center font-semibold bg-red-900/50 border border-red-500 text-red-300';
+        formStatus.textContent = '❌ UPLINK FAILED: Secure mail delivery failed. Please retry transmission.';
+        formStatus.className = 'mt-4 p-4 rounded-lg text-center font-semibold bg-red-900/40 border border-red-500/50 text-red-300 backdrop-blur-sm text-sm font-mono uppercase tracking-widest';
         formStatus.classList.remove('hidden');
       } finally {
         // Re-enable submit button
         submitBtn.disabled = false;
-        btnText.textContent = 'Send Message';
+        btnText.textContent = '⚡ Send Secure Message';
+        contactForm.classList.remove('sending');
       }
     });
   }

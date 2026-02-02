@@ -158,13 +158,75 @@ nav.scroll-up{
   width:100%;
 }
 
-.glow-text{
-  text-shadow:0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
-  animation:glow-pulse 3s ease-in-out infinite;
+/* Scanning animation for cards */
+.glass-card::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg, transparent, rgba(0,255,213,0.05), transparent);
+  transition:none;
+  pointer-events:none;
 }
 
-/* Enhanced hero section */
-.cyber-hero{
+.glass-card:hover::after{
+  animation:scan-horizontal 2s linear infinite;
+}
+
+@keyframes scan-horizontal{
+  0%{left:-100%;}
+  100%{left:100%;}
+}
+
+/* Transmission status for form */
+.transmission-line{
+  height:2px;
+  background:var(--neon-1);
+  width:0;
+  transition:width 0.5s ease;
+  margin-top:10px;
+  box-shadow:0 0 10px var(--neon-1);
+}
+
+.sending .transmission-line{
+  animation:transmit 2s infinite;
+}
+
+@keyframes transmit{
+  0%{width:0; opacity:0;}
+  50%{width:100%; opacity:1;}
+  100%{width:0; opacity:0; margin-left:100%;}
+}
+
+/* Enhanced input focus */
+input:focus ~ .input-glow,
+textarea:focus ~ .input-glow{
+  opacity:1;
+}
+
+/* Disavowed Branding */
+.glow-text{
+  text-shadow:0 0 10px rgba(0, 255, 213, 0.5), 0 0 20px rgba(0, 255, 213, 0.3);
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+/* Hide scrollbar but keep functionality */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 213, 0.2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-1);
+}
   position:relative;
   min-height:85vh;
   display:flex;
@@ -1000,6 +1062,26 @@ textarea::placeholder{
   color:var(--muted);
   opacity:0.5;
   font-style:italic;
+}
+
+/* Form validation states */
+input:invalid {
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.3),
+             0 0 8px rgba(239, 68, 68, 0.2);
+}
+
+input:valid {
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+/* Disable autocomplete styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: inset 0 0 0 50px rgba(0,0,0,0.5) !important;
+  -webkit-text-fill-color: #dbe7e7 !important;
+  border-color: rgba(0,255,213,0.3) !important;
 }
 
 /* Form button states */
