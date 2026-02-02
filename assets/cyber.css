@@ -42,10 +42,10 @@ body::before{
   width:100%;
   height:100%;
   z-index:0;
-  opacity:0.12;
+  opacity:0.25;
   pointer-events:none;
   overflow:hidden;
-  filter:saturate(0.3) brightness(0.6) blur(1px) grayscale(0.7);
+  filter:saturate(0.6) brightness(0.8) blur(0.5px) grayscale(0.4);
 }
 
 .cyber-map-background::before{
@@ -53,10 +53,10 @@ body::before{
   position:absolute;
   inset:0;
   background:linear-gradient(180deg, 
-    rgba(2,6,23,0.96) 0%, 
-    rgba(2,6,23,0.80) 20%, 
-    rgba(2,6,23,0.80) 80%, 
-    rgba(2,6,23,0.96) 100%
+    rgba(2,6,23,0.92) 0%, 
+    rgba(2,6,23,0.75) 20%, 
+    rgba(2,6,23,0.75) 80%, 
+    rgba(2,6,23,0.92) 100%
   );
   z-index:2;
   pointer-events:none;
@@ -66,7 +66,7 @@ body::before{
   content:'';
   position:absolute;
   inset:0;
-  background:radial-gradient(circle at 50% 50%, transparent 0%, rgba(2,6,23,0.9) 70%);
+  background:radial-gradient(circle at 50% 50%, transparent 0%, rgba(2,6,23,0.85) 75%);
   z-index:3;
   pointer-events:none;
 }
@@ -76,14 +76,14 @@ body::before{
   position:absolute;
   top:50%;
   left:50%;
-  transform:translate(-50%, -50%) scale(1.4);
+  transform:translate(-50%, -50%) scale(1.3);
   width:100%;
   height:100%;
   min-width:120vw;
   min-height:120vh;
   border:none;
   z-index:1;
-  clip-path:inset(6% 6%);
+  clip-path:inset(5% 5%);
 }
 
 @keyframes grid-flow{
@@ -1395,4 +1395,132 @@ a[target="_blank"]:hover{
   .cyber-hero{padding:48px 12px;}
   .cyber-hero h1{font-size:28px;}
   body::before{background-size:30px 30px;}
+}
+
+/* Navigation active state */
+.nav-link.active {
+  color: var(--neon-1);
+  text-shadow: 0 0 10px var(--glow-color);
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Certification Cards */
+.certification-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.certification-card.featured {
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.1);
+}
+
+.cert-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(135deg, #ffd700, #ffed4a);
+  color: #001820;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cert-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 213, 0.5));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+.cert-icon img {
+  max-width: 70px;
+  max-height: 70px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.certification-card:hover .cert-icon img {
+  transform: scale(1.1);
+  filter: brightness(0) saturate(100%) invert(64%) sepia(98%) saturate(1206%) hue-rotate(166deg) brightness(120%) contrast(110%);
+}
+
+.cert-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--neon-1);
+  margin-bottom: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.cert-org {
+  color: #9aa7ad;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.cert-desc {
+  color: #dbe7e7;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.cert-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.skill-tag {
+  background: rgba(0, 255, 213, 0.1);
+  border: 1px solid rgba(0, 255, 213, 0.3);
+  color: var(--neon-1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Project Cards */
+.project-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-icon {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 213, 0.5));
+}
+
+.project-link {
+  display: inline-block;
+  color: var(--neon-1);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid rgba(0, 255, 213, 0.3);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background: rgba(0, 255, 213, 0.05);
+}
+
+.project-link:hover {
+  background: rgba(0, 255, 213, 0.15);
+  border-color: rgba(0, 255, 213, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 255, 213, 0.2);
 }
