@@ -146,15 +146,14 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
   }, [nodes, dimensions])
 
   const handleNodeClick = (nodeId: string, section: SectionType) => {
-    if (section !== 'network') {
-      onNodeClick(section)
-    }
+    console.log('Node clicked:', nodeId, 'Section:', section)
+    onNodeClick(section)
   }
 
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Overlay to hide background branding */}
-      <div className="absolute inset-0 bg-black/20 z-0" />
+      <div className=\"absolute inset-0 bg-black/20 z-0 pointer-events-none\" />
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none z-10"
@@ -193,7 +192,7 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
       {nodes.map((node, index) => (
         <motion.div
           key={node.id}
-          className="absolute cyber-node z-20 cursor-pointer"
+          className=\"absolute cyber-node z-30 cursor-pointer\"
           style={{
             left: node.x - 25,
             top: node.y - 25,
@@ -208,7 +207,11 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
             delay: index * 0.1
           }}
           whileHover={{ scale: 1.2, rotate: 10 }}
-          onClick={() => handleNodeClick(node.id, node.section)}
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            handleNodeClick(node.id, node.section)
+          }}
           onMouseEnter={() => setHoveredNode(node.id)}
           onMouseLeave={() => setHoveredNode(null)}
         >

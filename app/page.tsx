@@ -15,25 +15,31 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState<SectionType>('network')
   const [isLoading, setIsLoading] = useState(true)
 
+  const handleSectionChange = (section: SectionType) => {
+    console.log('Changing section to:', section)
+    setActiveSection(section)
+  }
+
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000)
     return () => clearTimeout(timer)
   }, [])
 
   const renderSection = () => {
+    console.log('Current active section:', activeSection)
     switch (activeSection) {
       case 'home':
-        return <HomeSection onBack={() => setActiveSection('network')} />
+        return <HomeSection onBack={() => handleSectionChange('network')} />
       case 'about':
-        return <AboutSection onBack={() => setActiveSection('network')} />
+        return <AboutSection onBack={() => handleSectionChange('network')} />
       case 'certifications':
-        return <CertificationsSection onBack={() => setActiveSection('network')} />
+        return <CertificationsSection onBack={() => handleSectionChange('network')} />
       case 'projects':
-        return <ProjectsSection onBack={() => setActiveSection('network')} />
+        return <ProjectsSection onBack={() => handleSectionChange('network')} />
       case 'contact':
-        return <ContactSection onBack={() => setActiveSection('network')} />
+        return <ContactSection onBack={() => handleSectionChange('network')} />
       default:
-        return <CyberNodeNetwork onNodeClick={setActiveSection} />
+        return <CyberNodeNetwork onNodeClick={handleSectionChange} />
     }
   }
 
