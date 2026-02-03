@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { 
   Home, Shield, Award, Code, Mail, 
@@ -153,7 +153,7 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Overlay to hide background branding */}
-      <div className=\"absolute inset-0 bg-black/20 z-0 pointer-events-none\" />
+      <div className="absolute inset-0 bg-black/20 z-0 pointer-events-none" />
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none z-10"
@@ -192,7 +192,7 @@ export default function CyberNodeNetwork({ onNodeClick }: CyberNodeNetworkProps)
       {nodes.map((node, index) => (
         <motion.div
           key={node.id}
-          className=\"absolute cyber-node z-30 cursor-pointer\"
+          className="absolute cyber-node z-30 cursor-pointer"
           style={{
             left: node.x - 25,
             top: node.y - 25,
