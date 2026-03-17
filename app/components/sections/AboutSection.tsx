@@ -91,7 +91,7 @@ export default function AboutSection({ onBack }: AboutSectionProps) {
             </h2>
             <div className="space-y-6">
               <div className="border-l-2 border-neon/30 pl-4">
-                <h3 className="text-lg font-bold text-white">2024 - Present</h3>
+                <h3 className="text-lg font-bold text-white">2025 - Present</h3>
                 <p className="text-neon font-semibold">Senior Security Specialist</p>
                 <p className="text-gray-400 text-sm">Advanced penetration testing and security operations</p>
               </div>
